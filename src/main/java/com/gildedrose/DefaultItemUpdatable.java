@@ -1,58 +1,24 @@
 package com.gildedrose;
 
+import static java.lang.Math.max;
+
 public class DefaultItemUpdatable implements ItemUpdatable {
+
     @Override
-
     public void updateQuality(Item item) {
-        if (!item.name.equals(ItemType.AGED_BRIE.type)
-                && !item.name.equals(ItemType.BACKSTAGE_PASSES.type)) {
-            if (item.quality > 0) {
-                if (!item.name.equals(ItemType.SULFURAS.type)) {
-                    item.quality = item.quality - 1;
-                }
-            }
-        } else {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
 
-                if (item.name.equals(ItemType.BACKSTAGE_PASSES.type)) {
-                    if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-                }
-            }
+        item.quality = item.quality - getQualityDecrement(item.sellIn);
+        if(item.quality < 0) {
+            item.quality = 0;
         }
+        item.sellIn--;
+    }
 
-        if (!item.name.equals(ItemType.SULFURAS.type)) {
-            item.sellIn = item.sellIn - 1;
-        }
-
-
-        if (item.sellIn < 0) {
-            if (!item.name.equals(ItemType.AGED_BRIE.type)) {
-                if (!item.name.equals(ItemType.BACKSTAGE_PASSES.type)) {
-                    if (item.quality > 0) {
-                        if (!item.name.equals(ItemType.SULFURAS.type)) {
-                            item.quality = item.quality - 1;
-                        }
-                    }
-                } else {
-                    item.quality = 0;
-                }
-            } else {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-            }
-        }
+    protected int getQualityDecrement(int sellIn) {
+        return sellHasPassed(sellIn) ? 2 : 1;
+    }
+    protected boolean sellHasPassed(int sellIn) {
+        return sellIn <= 0;
     }
 }
 

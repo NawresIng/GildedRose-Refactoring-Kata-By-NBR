@@ -3,7 +3,7 @@ package com.gildedrose;
 public class ConjuredUpdatable extends DefaultItemUpdatable {
 
     @Override
-    public void updateQuality(Item item) {
-        item.quality -= 2;
+    protected int getQualityDecrement(int sellIn) {
+        return super.getQualityDecrement(sellIn) * 2;
     }
 }

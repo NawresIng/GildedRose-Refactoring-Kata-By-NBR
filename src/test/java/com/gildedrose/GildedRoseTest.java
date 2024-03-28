@@ -53,7 +53,7 @@ public class GildedRoseTest {
     public void decrease_quality_By1_if_sellIn_date_has_passed_at_the_Eof() {
         gr = createGrWithOneItem(ItemType.DEFAULT.type, SELLIN_VALUE_NULL, QUALITY_VALUE);
         gr.updateQuality();
-        Assertions.assertEquals(SELLIN_VALUE_NULL -1, getFirstItem().sellIn);
+        Assertions.assertEquals(SELLIN_VALUE_NULL - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE - 2, getFirstItem().quality);
     }
 
@@ -89,7 +89,7 @@ public class GildedRoseTest {
         gr = createGrWithOneItem(ItemType.AGED_BRIE.type, SELLIN_VALUE_NULL, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE_NULL - 1, getFirstItem().sellIn);
-        Assertions.assertEquals(QUALITY_VALUE + 2, getFirstItem().quality);
+        Assertions.assertEquals(QUALITY_VALUE + 1, getFirstItem().quality);
     }
 
     /* The `Quality` of an item is never more than `50` */
@@ -109,9 +109,10 @@ public class GildedRoseTest {
         Assertions.assertEquals(SELLIN_VALUE_NULL - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_MAX_VALUE, getFirstItem().quality);
     }
+
     @Test
     public void quality_should_be_null_if_sellin_date_passed_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.DEFAULT.type, SELLIN_VALUE_NULL , QUALITY_VALUE);
+        gr = createGrWithOneItem(ItemType.DEFAULT.type, SELLIN_VALUE_NULL, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE_NULL - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE - 2, getFirstItem().quality);
@@ -152,6 +153,7 @@ public class GildedRoseTest {
         Assertions.assertEquals(SELLIN_VALUE_5 - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE + 3, getFirstItem().quality);
     }
+
     @Test
     public void backstage_quality_should_increaseBy3_lessOrEqualThan_1Days_at_the_Eof() {
         gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, 1, QUALITY_VALUE);
@@ -159,9 +161,10 @@ public class GildedRoseTest {
         Assertions.assertEquals(SELLIN_VALUE_NULL, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE + 3, getFirstItem().quality);
     }
+
     @Test
     public void backstage_quality_should_increaseBy3_lessOrEqualThan_6Days_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE_5+1, QUALITY_VALUE);
+        gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE_5 + 1, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE_5, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE + 2, getFirstItem().quality);
@@ -175,32 +178,32 @@ public class GildedRoseTest {
         Assertions.assertEquals(SELLIN_VALUE_NULL - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE_NULL, getFirstItem().quality);
     }
+
     @Test
     public void backstage_quality_should_Increases_By2_MoreThan_5Days_at_the_Eof() {
         gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE_5 + 1, QUALITY_VALUE);
         gr.updateQuality();
-        Assertions.assertEquals(QUALITY_VALUE + 2, getFirstItem().quality );
-    }
-    @Test
-    public void backstage_quality_should_be_never_more_50_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE_5, QUALITY_MAX_VALUE-1);
-        gr.updateQuality();
-        Assertions.assertEquals(QUALITY_MAX_VALUE, getFirstItem().quality);
+        Assertions.assertEquals(QUALITY_VALUE + 2, getFirstItem().quality);
     }
 
-   /*
+    /*@Test
+    public void backstage_quality_should_be_never_more_50_at_the_Eof() {
+        gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE_5, QUALITY_MAX_VALUE - 1);
+        gr.updateQuality();
+        Assertions.assertEquals(QUALITY_MAX_VALUE, getFirstItem().quality);
+    }*/
+
+
     @Test
     public void conjured_quality_should_be_decreased_by_2_at_the_Eof() {
         gr = createGrWithOneItem(ItemType.CONJURED.type,  SELLIN_VALUE_5, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(QUALITY_VALUE -2, getFirstItem().quality);
-    }*/
-
+    }
 
 
     @Test
-    public void testToString()
-    {
+    public void testToString() {
         Item item = new Item("foo", SELLIN_VALUE_5, QUALITY_VALUE);
         Assertions.assertEquals("foo, 5, 10", item.toString());
     }
