@@ -22,6 +22,7 @@ Step 4:
 Refactoring code ...
 
 Step 5:
-Conception for the solution using  deseign pattern as Factory 
+Conception for the solution using  deseign pattern for exemple Factory  
 
 
+![image](https://github.com/NawresIng/GildedRose-Refactoring-Kata-By-NBR/assets/49527906/251e2f83-3d24-45f2-8063-a773f9ff6ff0)
