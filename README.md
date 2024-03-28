@@ -24,5 +24,5 @@ Refactoring code ...
 Step 5:
 Conception for the solution using  deseign pattern for exemple Factory  
 
-
-![image](https://github.com/NawresIng/GildedRose-Refactoring-Kata-By-NBR/assets/49527906/251e2f83-3d24-45f2-8063-a773f9ff6ff0)
+Here is the result after testing the whole solution with converge 
+![image](https://github.com/NawresIng/GildedRose-Refactoring-Kata-By-NBR/assets/49527906/21336274-0d25-44f3-b0c5-ae959bcac9dd)
