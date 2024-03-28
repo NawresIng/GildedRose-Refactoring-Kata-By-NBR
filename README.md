@@ -1,5 +1,9 @@
 # Gilded Rose in Java
 
+For this solution i used : 
+java 8, maven, junit 
+
+
 As a best practice, I will try to divide the exercise to many steps :
 
 Step 1:
@@ -18,6 +22,6 @@ Step 4:
 Refactoring code ...
 
 Step 5:
-Conception for the solution using  deseign pattern
+Conception for the solution using  deseign pattern as Factory 
 
 
