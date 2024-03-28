@@ -78,7 +78,7 @@ public class GildedRoseTest {
     /* "Aged Brie"__ actually increases in `Quality` the older it gets */
     @Test
     public void agedBrie_should_increase_quality_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BRIE.type, SELLIN_VALUE, QUALITY_VALUE);
+        gr = createGrWithOneItem(ItemType.AGED_BRIE.type, SELLIN_VALUE, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE + 1, getFirstItem().quality);
@@ -86,7 +86,7 @@ public class GildedRoseTest {
 
     @Test
     public void agedBrie_should_increaseBy2_if_sellIn_values_has_passed_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BRIE.type, SELLIN_VALUE_NULL, QUALITY_VALUE);
+        gr = createGrWithOneItem(ItemType.AGED_BRIE.type, SELLIN_VALUE_NULL, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE_NULL - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE + 2, getFirstItem().quality);
@@ -95,7 +95,7 @@ public class GildedRoseTest {
     /* The `Quality` of an item is never more than `50` */
     @Test
     public void quality_should_be_never_more_50_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BRIE.type, SELLIN_VALUE, QUALITY_MAX_VALUE);
+        gr = createGrWithOneItem(ItemType.AGED_BRIE.type, SELLIN_VALUE, QUALITY_MAX_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_MAX_VALUE, getFirstItem().quality);
@@ -104,7 +104,7 @@ public class GildedRoseTest {
     /* The `Quality` of an item is never more than `50` even sellIn date passed */
     @Test
     public void quality_should_be_never_more_50_even_sellin_passed_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BRIE.type, SELLIN_VALUE_NULL, QUALITY_MAX_VALUE - 1);
+        gr = createGrWithOneItem(ItemType.AGED_BRIE.type, SELLIN_VALUE_NULL, QUALITY_MAX_VALUE - 1);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE_NULL - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_MAX_VALUE, getFirstItem().quality);
@@ -129,7 +129,7 @@ public class GildedRoseTest {
     /*"Backstage passes"__, like aged brie, increases in `Quality` as its `SellIn` value approaches*/
     @Test
     public void backstage_quality_should_increaseBy1_MoreThan10Days_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BACKSTAGE.type, SELLIN_VALUE, QUALITY_VALUE);
+        gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE + 1, getFirstItem().quality);
@@ -138,7 +138,7 @@ public class GildedRoseTest {
     /*Backstage	`Quality` increases by `2` when there are `10` days or less */
     @Test
     public void backstage_quality_should_increaseBy2_lessOrEqualThan_10Days_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BACKSTAGE.type, SELLIN_VALUE_10, QUALITY_VALUE);
+        gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE_10, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE_10 - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE + 2, getFirstItem().quality);
@@ -147,21 +147,21 @@ public class GildedRoseTest {
     /*Backstage	`Quality` increases by  `3` when there are `5` days or less */
     @Test
     public void backstage_quality_should_increaseBy3_lessOrEqualThan_5Days_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BACKSTAGE.type, SELLIN_VALUE_5, QUALITY_VALUE);
+        gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE_5, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE_5 - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE + 3, getFirstItem().quality);
     }
     @Test
     public void backstage_quality_should_increaseBy3_lessOrEqualThan_1Days_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BACKSTAGE.type, 1, QUALITY_VALUE);
+        gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, 1, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE_NULL, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE + 3, getFirstItem().quality);
     }
     @Test
     public void backstage_quality_should_increaseBy3_lessOrEqualThan_6Days_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BACKSTAGE.type, SELLIN_VALUE_5+1, QUALITY_VALUE);
+        gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE_5+1, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE_5, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE + 2, getFirstItem().quality);
@@ -170,20 +170,20 @@ public class GildedRoseTest {
     /*Backstage	`Quality` drops to `0` after the concert */
     @Test
     public void backstage_quality_should_dropToZero_after_concert_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BACKSTAGE.type, SELLIN_VALUE_NULL, QUALITY_VALUE);
+        gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE_NULL, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(SELLIN_VALUE_NULL - 1, getFirstItem().sellIn);
         Assertions.assertEquals(QUALITY_VALUE_NULL, getFirstItem().quality);
     }
     @Test
     public void backstage_quality_should_IncreasesBy2MoreThan5DaysFromConcert() {
-        gr = createGrWithOneItem(ItemType.BACKSTAGE.type, SELLIN_VALUE_5 + 1, QUALITY_VALUE);
+        gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE_5 + 1, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(QUALITY_VALUE + 2, getFirstItem().quality );
     }
     @Test
     public void backstage_quality_should_be_never_more_50_at_the_Eof() {
-        gr = createGrWithOneItem(ItemType.BACKSTAGE.type, SELLIN_VALUE_5, QUALITY_MAX_VALUE-1);
+        gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE_5, QUALITY_MAX_VALUE-1);
         gr.updateQuality();
         Assertions.assertEquals(QUALITY_MAX_VALUE, getFirstItem().quality);
     }

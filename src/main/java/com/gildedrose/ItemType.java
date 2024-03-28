@@ -1,10 +1,10 @@
 package com.gildedrose;
 
 public enum ItemType {
-    BRIE ("Aged Brie"),
-    BACKSTAGE ("Backstage passes to a TAFKAL80ETC concert"),
+    AGED_BRIE("Aged Brie"),
+    BACKSTAGE_PASSES("Backstage passes to a TAFKAL80ETC concert"),
     SULFURAS("Sulfuras, Hand of Ragnaros"),
-    CONJURED("Conjured "),
+    CONJURED("Conjured"),
     DEFAULT("Others");
 
     public final String type;

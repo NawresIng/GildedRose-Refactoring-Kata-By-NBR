@@ -9,13 +9,13 @@ public class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            updateItem(item);
+            updateQualityItem(item);
         }
     }
 
-    public void updateItem(Item item) {
-        if (!item.name.equals(ItemType.BRIE.type)
-                && !item.name.equals(ItemType.BACKSTAGE.type)) {
+    public void updateQualityItem(Item item) {
+        if (!item.name.equals(ItemType.AGED_BRIE.type)
+                && !item.name.equals(ItemType.BACKSTAGE_PASSES.type)) {
             if (item.quality > 0) {
                 if (!item.name.equals(ItemType.SULFURAS.type)) {
                     item.quality = item.quality - 1;
@@ -25,7 +25,7 @@ public class GildedRose {
             if (item.quality < 50) {
                 item.quality = item.quality + 1;
 
-                if (item.name.equals(ItemType.BACKSTAGE.type)) {
+                if (item.name.equals(ItemType.BACKSTAGE_PASSES.type)) {
                     if (item.sellIn < 11) {
                         if (item.quality < 50) {
                             item.quality = item.quality + 1;
@@ -47,8 +47,8 @@ public class GildedRose {
 
 
         if (item.sellIn < 0) {
-            if (!item.name.equals(ItemType.BRIE.type)) {
-                if (!item.name.equals(ItemType.BACKSTAGE.type)) {
+            if (!item.name.equals(ItemType.AGED_BRIE.type)) {
+                if (!item.name.equals(ItemType.BACKSTAGE_PASSES.type)) {
                     if (item.quality > 0) {
                         if (!item.name.equals(ItemType.SULFURAS.type)) {
                             item.quality = item.quality - 1;
