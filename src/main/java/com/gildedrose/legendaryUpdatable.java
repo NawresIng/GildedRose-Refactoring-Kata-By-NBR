@@ -1,4 +1,4 @@
 package com.gildedrose;
 
-public class legendaryUpdatable extends  DefaultUpdatable{
+public class legendaryUpdatable extends DefaultItemUpdatable {
 }

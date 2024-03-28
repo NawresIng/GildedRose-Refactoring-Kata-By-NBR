@@ -1,5 +1,7 @@
 package com.gildedrose;
 
-public class BackstagePassesUpdatable extends DefaultUpdatable {
+public class BackstagePassesUpdatable extends DefaultItemUpdatable {
+
+
 
 }

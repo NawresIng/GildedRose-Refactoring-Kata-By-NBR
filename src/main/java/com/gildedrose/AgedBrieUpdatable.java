@@ -1,4 +1,4 @@
 package com.gildedrose;
 
-public class AgedBrieUpdatable extends DefaultUpdatable{
+public class AgedBrieUpdatable extends DefaultItemUpdatable {
 }

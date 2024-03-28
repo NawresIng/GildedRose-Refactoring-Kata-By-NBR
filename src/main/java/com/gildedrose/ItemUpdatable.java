@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public interface Updatable {
+public interface ItemUpdatable {
 
     void updateQuality(Item item);
 }

@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class DefaultUpdatable implements Updatable {
+public class DefaultItemUpdatable implements ItemUpdatable {
     @Override
 
     public void updateQuality(Item item) {

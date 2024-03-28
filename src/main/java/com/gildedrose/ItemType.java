@@ -12,4 +12,8 @@ public enum ItemType {
     ItemType(String type) {
         this.type = type;
     }
+
+   String getType() {
+        return type;
+    }
 }

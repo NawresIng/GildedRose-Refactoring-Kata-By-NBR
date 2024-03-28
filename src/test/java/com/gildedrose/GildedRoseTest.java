@@ -176,7 +176,7 @@ public class GildedRoseTest {
         Assertions.assertEquals(QUALITY_VALUE_NULL, getFirstItem().quality);
     }
     @Test
-    public void backstage_quality_should_IncreasesBy2MoreThan5DaysFromConcert() {
+    public void backstage_quality_should_Increases_By2_MoreThan_5Days_at_the_Eof() {
         gr = createGrWithOneItem(ItemType.BACKSTAGE_PASSES.type, SELLIN_VALUE_5 + 1, QUALITY_VALUE);
         gr.updateQuality();
         Assertions.assertEquals(QUALITY_VALUE + 2, getFirstItem().quality );
@@ -187,6 +187,17 @@ public class GildedRoseTest {
         gr.updateQuality();
         Assertions.assertEquals(QUALITY_MAX_VALUE, getFirstItem().quality);
     }
+
+   /*
+    @Test
+    public void conjured_quality_should_be_decreased_by_2_at_the_Eof() {
+        gr = createGrWithOneItem(ItemType.CONJURED.type,  SELLIN_VALUE_5, QUALITY_VALUE);
+        gr.updateQuality();
+        Assertions.assertEquals(QUALITY_VALUE -2, getFirstItem().quality);
+    }*/
+
+
+
     @Test
     public void testToString()
     {
